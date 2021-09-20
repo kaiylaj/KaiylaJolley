@@ -67,8 +67,8 @@ head(dat.us)
 
 Use this command to make the state names into a new variable called State. 
 
-```{r, eval=FALSE}
-dat$state <- tolower(rownames(USArrests))
+```{r, eval=TRUE}
+dat.us$state <- tolower(rownames(USArrests))
 ```
 
 This dataset has the state names as row names, so we just want to make them into a new variable. We also make them all lower case, because that will help us draw a map later - the map function requires the states to be lower case.
@@ -149,13 +149,13 @@ In the console below (not in text), type `install.packages("maps")` and press En
 
 Run this code:
 
-```{r, eval = FALSE, fig.width = 7.5, fig.height = 4}
+```{r, eval= TRUE, fig.width = 7.5, fig.height = 4}
 
-install.packages("maps") 
-install.packages("ggplot2")
+#install.packages("maps") 
+#install.packages("ggplot2")
 
-library('maps') 
-library('ggplot2') 
+library(maps) 
+library(ggplot2) 
 
 ggplot(dat.us, aes(map_id=state, fill=Murder)) + 
   geom_map(map=map_data("state")) + 

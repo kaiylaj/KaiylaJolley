@@ -432,11 +432,11 @@ head(dat.us)</code></pre>
 <div id="problem-2" class="section level3">
 <h3>Problem 2</h3>
 <p>Use this command to make the state names into a new variable called State.</p>
-<pre class="r"><code>dat$state &lt;- tolower(rownames(USArrests))</code></pre>
+<pre class="r"><code>dat.us$state &lt;- tolower(rownames(USArrests))</code></pre>
 <p>This dataset has the state names as row names, so we just want to make them into a new variable. We also make them all lower case, because that will help us draw a map later - the map function requires the states to be lower case.</p>
 <p>List the variables contained in the dataset <code>USArrests</code>.</p>
 <pre class="r"><code>names(dat.us)</code></pre>
-<pre><code>## [1] &quot;Murder&quot;   &quot;Assault&quot;  &quot;UrbanPop&quot; &quot;Rape&quot;</code></pre>
+<pre><code>## [1] &quot;Murder&quot;   &quot;Assault&quot;  &quot;UrbanPop&quot; &quot;Rape&quot;     &quot;state&quot;</code></pre>
 <p><strong>Answer</strong>: The four variables are Murder, Assault, UrbanPop, Rape.</p>
 </div>
 <div id="problem-3" class="section level3">
@@ -485,15 +485,16 @@ hist(dat.us$Rape, xlab= &quot;Rapes&quot;, ylab=&quot;Frequency&quot;, main= &qu
 <h3>Problem 8</h3>
 <p>In the console below (not in text), type <code>install.packages("maps")</code> and press Enter, and then type <code>install.packages("ggplot2")</code> and press Enter. This will install the packages so you can load the libraries.</p>
 <p>Run this code:</p>
-<pre class="r"><code>install.packages(&quot;maps&quot;) 
-install.packages(&quot;ggplot2&quot;)
+<pre class="r"><code>#install.packages(&quot;maps&quot;) 
+#install.packages(&quot;ggplot2&quot;)
 
-library(&#39;maps&#39;) 
-library(&#39;ggplot2&#39;) 
+library(maps) 
+library(ggplot2) 
 
 ggplot(dat.us, aes(map_id=state, fill=Murder)) + 
   geom_map(map=map_data(&quot;state&quot;)) + 
   expand_limits(x=map_data(&quot;state&quot;)$long, y=map_data(&quot;state&quot;)$lat)</code></pre>
+<p><img src="Assignments_files/figure-html/unnamed-chunk-8-1.png" width="720" /></p>
 <p>What does this code do? Explain what each line is doing.</p>
 <p>Answer: The lines library(‘maps’) and library(‘ggplot2’) are pulling from the packages that were installed. The line ggplot(dat.us, aes(map_id=state, fill=Murder)) is creating a ggplot with the USArrests dataset. The plot is set with an aesthetic of a map with the US states. Each state is filled in with its respective murder arrest data. The line geom_map(map=map_data(“state”)) contains the map coordinates for each US state.The last line ‘expand_limits(x=map_data(“state”)<span class="math inline">\(long, y=map_data(&quot;state&quot;)\)</span>lat)’ ensures that the limits of the plot include a single value for all plots. The x and y axis of this plot contains the value of “state” from the map data. The x axis is longitude and the y axis is latitude. Together this code creates a map of the US with each state filled in with its value for murder arrests.The darker blue indicates that the murder arrest frequency is 5 and below and the light blue indicates that it is 15 and above.</p>
 <p><span class="math display">\[\\[2in]\]</span></p>
