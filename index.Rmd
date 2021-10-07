@@ -19,7 +19,7 @@ output: html_document
 
 # **Kaiyla Jolley**
 
-This is a template example for lab journaling. Students in Matt Crump's Human Cognition and Performance Lab will use this template to learn R, and other things. Students can replace this text with more fun things. People not in my lab can use this too.
+This is a website by Kaiyla Jolley, 3rd year Criminology Undergrad at the University of Pennsylvania. This website contains assignments for "Statistics for the Social Sciences" which is a course that introduces statistics through systematic data analysis. There is a focus on statistics related to the criminal justice system. 
 
 ## How to use
 

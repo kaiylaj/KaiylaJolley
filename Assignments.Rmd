@@ -174,7 +174,7 @@ $$\\[2in]$$
 
 # Assignment 2 
 
-#Problem 1
+### Problem 1
 
 ```{r} 
 
@@ -191,7 +191,7 @@ What are the dimensions of the dataset?
 
 *Answer*: The data has 7 columns for the 7 variables (mjage, cigage, iralcage, age2, sexatract, speakeng1 and irsex). There are 171 observations in the data.
 
-#Problem 2
+### Problem 2
 
 Describe the variables in the dataset.
 
@@ -201,7 +201,7 @@ What is this dataset about? Who collected the data, what kind of sample is it, a
 
 *Answer*:This dataset is a small sample from the 2019 survey from the National Survey of Drug Use and Health about drug use in the 50 states and the District of Columbia in the United States. The survey was directed by the Sibstance Abuse and Mental Health Services Administration and it was conducted by RTI International. The survey is used to determine which populations and geographic areas have particular substance use problems so federal resources can be used effectivly. 
 
-#Problem 3: Age and gender
+### Problem 3: Age and gender
 
 What is the age distribution of the sample like? Make sure you read the codebook to know what the variable values mean.
 
@@ -231,7 +231,7 @@ barplot(tab.agesex,
 
 *Answer*:From this plot, we can determine that the relationship between sex and age is fairly even. For the largest age group, the gender distribution appears to be almost equal. However, for the lower age groups there appears to be more female respondents and for the higher age distributions there appears to be more male respondents. 
 
-#Problem 4: Substance use
+### Problem 4: Substance use
 
 For which of the three substances included in the dataset (marijuana, alcohol, and cigarettes) do individuals tend to use the substance earlier?
 
@@ -248,7 +248,7 @@ hist(dat$iralcage, col="orange", xlab= "Age of first Alcohol Use", main= "Age Di
 *Answer*:Individuals tend to first start using marijuana and alcohol at a much younger age than cigarettes but individuals tend to first start using alcohol earliest. 
 
 
-#Problem 5: Sexual attraction
+### Problem 5: Sexual attraction
 
 What does the distribution of sexual attraction look like? Is this what you expected?
 
@@ -270,7 +270,7 @@ barplot(tab.sexatractsex,
         beside = FALSE) 
 ```
 
-#Problem 6: English speaking
+### Problem 6: English speaking
 
 What does the distribution of English speaking look like in the sample? Is this what you might expect for a random sample of the US population?
 
@@ -309,7 +309,7 @@ head(dat)
 ```
 
 
-#Problem 1 (10 points)
+### Problem 1 
 
 a. Describe the dataset. This is the source: https://github.com/washingtonpost/data-police-shootings . Write two sentences (max.) about this.
 
@@ -336,7 +336,7 @@ table(dat$armed)
 
 __I am suprised to see air conditioner, flashlight and stapler in the "armed" variable.__
 
-#Problem 2 (10 points)
+### Problem 2 
 
 a. Describe the age distribution of the sample. Is this what you would expect to see?
 ```{r}
@@ -366,7 +366,7 @@ barplot(tab.gender, main= "Gender Distribution of Fatal Police Shootings", xlab=
 __The majority of fatal police shooting victims were males. This is expected because the majority of people targeted by the police are males.Missing values were omitted from the distribution because the gender of those victims were unknown.__
 
 
-#Problem 3 (10 points)
+### Problem 3 
 
 a. How many police officers had a body camera, according to news reports? What proportion is this of all the incidents in the data? Are you surprised that it is so high or low?
 
@@ -388,7 +388,7 @@ __In 1903 incidents the victim was fleeing.This is about 29% of the data. This v
 
 
 
-#Problem 4 (10 points) -  Answer only one of these (a or b).
+### Problem 4  -  Answer only one of these (a or b).
 
 a. Describe the relationship between the variables "body camera" and "flee" using a stacked barplot. What can you conclude from this relationship? 
 
