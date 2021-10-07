@@ -502,7 +502,8 @@ ggplot(dat.us, aes(map_id=state, fill=Murder)) +
 </div>
 <div id="assignment-2" class="section level1">
 <h1>Assignment 2</h1>
-<p>#Problem 1</p>
+<div id="problem-1-1" class="section level3">
+<h3>Problem 1</h3>
 <pre class="r"><code>dat &lt;- read.csv(file = &#39;dat.nsduh.small.1.csv&#39;)
 
 
@@ -521,12 +522,16 @@ head(dat)</code></pre>
 <pre><code>## [1] 171   7</code></pre>
 <p>What are the dimensions of the dataset?</p>
 <p><em>Answer</em>: The data has 7 columns for the 7 variables (mjage, cigage, iralcage, age2, sexatract, speakeng1 and irsex). There are 171 observations in the data.</p>
-<p>#Problem 2</p>
+</div>
+<div id="problem-2-1" class="section level3">
+<h3>Problem 2</h3>
 <p>Describe the variables in the dataset.</p>
 <p><em>Answer</em>:There are 7 variables in the dataset. mjage represents the age whne the participants first used marijuana or hashish. Cigage represents the age when the participants first started smoking cigarettes everyday. Iralcage is the age when participants first tried alcohol. Age2 is the final edited age of the participants. Irsex represents the gender of participants. Sexatract is the sexual attraction of the participants. Speakeng represents how well the participant speaks english.</p>
 <p>What is this dataset about? Who collected the data, what kind of sample is it, and what was the purpose of generating the data?</p>
 <p><em>Answer</em>:This dataset is a small sample from the 2019 survey from the National Survey of Drug Use and Health about drug use in the 50 states and the District of Columbia in the United States. The survey was directed by the Sibstance Abuse and Mental Health Services Administration and it was conducted by RTI International. The survey is used to determine which populations and geographic areas have particular substance use problems so federal resources can be used effectivly.</p>
-<p>#Problem 3: Age and gender</p>
+</div>
+<div id="problem-3-age-and-gender" class="section level3">
+<h3>Problem 3: Age and gender</h3>
 <p>What is the age distribution of the sample like? Make sure you read the codebook to know what the variable values mean.</p>
 <pre class="r"><code>hist(dat$age2, xlab= &quot;Final Edited Age&quot;, main= &quot;Age Distribution of NSDUH 2019 Survey&quot;, col=&quot;purple&quot;)</code></pre>
 <p><img src="Assignments_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
@@ -544,7 +549,9 @@ barplot(tab.agesex,
 <p><img src="Assignments_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p><em>Answer</em>:The sample is not fully balanced in terms of gender. There are more females with 52.28% of respondents being female and 47.72% being male.</p>
 <p><em>Answer</em>:From this plot, we can determine that the relationship between sex and age is fairly even. For the largest age group, the gender distribution appears to be almost equal. However, for the lower age groups there appears to be more female respondents and for the higher age distributions there appears to be more male respondents.</p>
-<p>#Problem 4: Substance use</p>
+</div>
+<div id="problem-4-substance-use" class="section level3">
+<h3>Problem 4: Substance use</h3>
 <p>For which of the three substances included in the dataset (marijuana, alcohol, and cigarettes) do individuals tend to use the substance earlier?</p>
 <pre class="r"><code>par(mfrow=c(3,1))
 
@@ -555,7 +562,9 @@ hist(dat$cigage, col=&quot;grey&quot;, xlab= &quot;Age of first Cigarette Use&qu
 hist(dat$iralcage, col=&quot;orange&quot;, xlab= &quot;Age of first Alcohol Use&quot;, main= &quot;Age Distribution of First Alcohol Use&quot;, xlim= c(0,50), ylim= c(0,100)) </code></pre>
 <p><img src="Assignments_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p><em>Answer</em>:Individuals tend to first start using marijuana and alcohol at a much younger age than cigarettes but individuals tend to first start using alcohol earliest.</p>
-<p>#Problem 5: Sexual attraction</p>
+</div>
+<div id="problem-5-sexual-attraction" class="section level3">
+<h3>Problem 5: Sexual attraction</h3>
 <p>What does the distribution of sexual attraction look like? Is this what you expected?</p>
 <pre class="r"><code>tab.sexatract &lt;- table(dat$sexatract)
 barplot(tab.sexatract, main= &quot;Sexual Attraction Distribution&quot;, xlab= &quot;Sexual Attraction&quot;, ylab= &quot;Frequency&quot;)</code></pre>
@@ -569,7 +578,9 @@ barplot(tab.sexatractsex,
         legend.text = rownames(tab.sexatractsex),
         beside = FALSE) </code></pre>
 <p><img src="Assignments_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<p>#Problem 6: English speaking</p>
+</div>
+<div id="problem-6-english-speaking" class="section level3">
+<h3>Problem 6: English speaking</h3>
 <p>What does the distribution of English speaking look like in the sample? Is this what you might expect for a random sample of the US population?</p>
 <pre class="r"><code>tab.speakeng &lt;- table(dat$speakengl)
 barplot(tab.speakeng, xlab= &quot;How Well English is Spoken&quot;, ylab= &quot;Frequency&quot;, names.arg = c(&quot;Very Well&quot;,&quot;Well&quot;,&quot;Not Well&quot;), main = &quot;Distribution of English Speaking&quot;)</code></pre>
@@ -585,6 +596,7 @@ barplot(tab.speakengsex,
 <p><img src="Assignments_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p><em>Answer</em>:There appears to be an equal amount of English speaking females and males.</p>
 <p><span class="math display">\[\\[2in]\]</span></p>
+</div>
 </div>
 <div id="exam-1" class="section level1">
 <h1>Exam 1</h1>
@@ -614,7 +626,8 @@ head(dat)</code></pre>
 ## 4       False  -122.422   37.763               True
 ## 5       False  -104.692   40.384               True
 ## 6       False   -97.423   35.877               True</code></pre>
-<p>#Problem 1 (10 points)</p>
+<div id="problem-1-2" class="section level3">
+<h3>Problem 1</h3>
 <ol style="list-style-type: lower-alpha">
 <li>Describe the dataset. This is the source: <a href="https://github.com/washingtonpost/data-police-shootings" class="uri">https://github.com/washingtonpost/data-police-shootings</a> . Write two sentences (max.) about this.</li>
 </ol>
@@ -745,7 +758,9 @@ head(dat)</code></pre>
 ##                           wrench 
 ##                                1</code></pre>
 <p><strong>I am suprised to see air conditioner, flashlight and stapler in the “armed” variable.</strong></p>
-<p>#Problem 2 (10 points)</p>
+</div>
+<div id="problem-2-2" class="section level3">
+<h3>Problem 2</h3>
 <ol style="list-style-type: lower-alpha">
 <li>Describe the age distribution of the sample. Is this what you would expect to see?</li>
 </ol>
@@ -780,7 +795,9 @@ table(gender.no.nas)</code></pre>
 barplot(tab.gender, main= &quot;Gender Distribution of Fatal Police Shootings&quot;, xlab= &quot;Gender&quot;, ylab=&quot;Frequency&quot;)</code></pre>
 <p><img src="Assignments_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p><strong>The majority of fatal police shooting victims were males. This is expected because the majority of people targeted by the police are males.Missing values were omitted from the distribution because the gender of those victims were unknown.</strong></p>
-<p>#Problem 3 (10 points)</p>
+</div>
+<div id="problem-3-1" class="section level3">
+<h3>Problem 3</h3>
 <ol style="list-style-type: lower-alpha">
 <li>How many police officers had a body camera, according to news reports? What proportion is this of all the incidents in the data? Are you surprised that it is so high or low?</li>
 </ol>
@@ -807,7 +824,9 @@ barplot(tab.gender, main= &quot;Gender Distribution of Fatal Police Shootings&qu
 ##                     Car        Foot Not fleeing       Other 
 ##  0.07446163  0.16044889  0.12814680  0.59933273  0.03760995</code></pre>
 <p><strong>In 1903 incidents the victim was fleeing.This is about 29% of the data. This variable is a bit confusing because of the missing values and the “other” category. It is hard to get an accurate depiction of the data but this is not what I expect because in theory the police would shoot at a person that is a fleeing threat not standing still.</strong></p>
-<p>#Problem 4 (10 points) - Answer only one of these (a or b).</p>
+</div>
+<div id="problem-4---answer-only-one-of-these-a-or-b." class="section level3">
+<h3>Problem 4 - Answer only one of these (a or b).</h3>
 <ol style="list-style-type: lower-alpha">
 <li>Describe the relationship between the variables “body camera” and “flee” using a stacked barplot. What can you conclude from this relationship?</li>
 </ol>
@@ -842,6 +861,7 @@ head(mydates)
 <li>Regarding missing values in problem 4, do you see any? If so, do you think that’s all that’s missing from the data?</li>
 </ol>
 <p><strong>There is missing data for the variable “Flee”.There are two columns in the “flee” variable that could count under missing data. The first column which is actually missing values and the last column which is “other”. The “other” category is not explained so we do not know what that is reporting. There could potentially be more missing data since the majority of incidents do not have video documentation so the police officers could have lied about the fleeing nature of the victim. The category for body cameras could also have missing values if some police officers did not report whether or not they had a body camera on or they lied.</strong></p>
+</div>
 </div>
 
 
