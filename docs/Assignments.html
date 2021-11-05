@@ -357,7 +357,6 @@ div.tocify {
 </div>
 <div id="assignment-1" class="section level1">
 <h1>Assignment 1</h1>
-<p><strong>Collaborators: </strong></p>
 <div id="problem-1" class="section level3">
 <h3>Problem 1</h3>
 <p>Install the datasets package on the console below using <code>install.packages("datasets")</code>. Now load the library.</p>
@@ -983,6 +982,115 @@ plot(crime.lm, which=5)</code></pre>
 <li>Can you conclude that if individuals were to receive more education, then crime will be reported more often? Why or why not?</li>
 </ol>
 <p><strong>The conclusion that more education will lead to more reported crimes cannot be made because correlation does not imply causation. There are other factors involved in the reported crime rate such as population, age and unemployment. </strong></p>
+<p><span class="math display">\[\\[2in]\]</span></p>
+</div>
+<div id="exam-2" class="section level1">
+<h1>Exam 2</h1>
+<div id="data-description" class="section level2">
+<h2>Data description:</h2>
+<p>This dataset provides (simulated) data about 200 police departments in one year. It contains information about the funding received by the department as well as incidents of police brutality. Suppose this dataset (sim.data.csv) was collected by researchers to answer this question: <strong>“Does having more funding in a police department lead to fewer incidents of police brutality?”</strong></p>
+</div>
+<div id="codebook" class="section level2">
+<h2>Codebook:</h2>
+<ul>
+<li>funds: How much funding the police department received in that year in millions of dollars.</li>
+<li>po.brut: How many incidents of police brutality were reported by the department that year.</li>
+<li>po.dept.code: Police department code</li>
+</ul>
+<div id="problem-1-eda" class="section level3">
+<h3>Problem 1: EDA</h3>
+<p>Describe the dataset and variables. Perform exploratory data analysis for the two variables of interest: funds and po.brut.</p>
+<pre class="r"><code>dat &lt;- read.csv(file = &#39;sim.data.csv&#39;)
+
+head(dat)</code></pre>
+<pre><code>##   po.dept.code funds po.brut
+## 1            1  48.1      23
+## 2            2  81.4      10
+## 3            3  41.8      25
+## 4            4  61.7      19
+## 5            5  86.4       8
+## 6            6  51.6      22</code></pre>
+<pre class="r"><code>dim(dat)</code></pre>
+<pre><code>## [1] 200   3</code></pre>
+<pre class="r"><code>par(mfrow=c(2,1))
+
+hist(dat$funds, main= &quot;Distribution of Funds for Police Departments&quot;, xlab= &quot;Amount of funds (Millions of dollars)&quot;, ylab= &quot;Frequency&quot;, xlim = c(0,100), ylim= c(0,100), col=&quot;blue&quot;)
+
+hist(dat$po.brut, main= &quot;Distribution of Incidents of Police Brutality  for Police Departments&quot;, xlab= &quot;Incidents of Policy Brutality&quot;, ylab= &quot;Frequency&quot;, xlim = c(0,100), ylim= c(0,100), col=&quot;red&quot;)</code></pre>
+<p><img src="Assignments_files/figure-html/unnamed-chunk-34-1.png" width="576" /></p>
+<p><strong>The dataset contains 200 observations. Each observation corresponds to a police department. There are three columns that correspond to the three variables of police department code, funding that each department received and incidents of police brutality for each department.The distribution for funds appears to be almost normal with a slight skew to the right. The distribution for incidents of police brutality appears to have a slight left skew with the most frequent number of incidents being around 20. </strong></p>
+</div>
+<div id="problem-2-linear-regression" class="section level3">
+<h3>Problem 2: Linear regression</h3>
+<ol style="list-style-type: lower-alpha">
+<li>Perform a simple linear regression to answer the question of interest. To do this, name your linear model “reg.output” and write the summary of the regression by using “summary(reg.output)”.</li>
+</ol>
+<pre class="r"><code>reg.output &lt;- lm(formula = po.brut ~ funds, data = dat)
+
+summary(reg.output)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = po.brut ~ funds, data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.9433 -0.2233  0.2544  0.5952  1.1803 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 40.543069   0.282503  143.51   &lt;2e-16 ***
+## funds       -0.367099   0.004496  -81.64   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9464 on 198 degrees of freedom
+## Multiple R-squared:  0.9712, Adjusted R-squared:  0.971 
+## F-statistic:  6666 on 1 and 198 DF,  p-value: &lt; 2.2e-16</code></pre>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Report the estimated coefficient, standard error, and p-value of the slope. Is the relationship between funds and incidents statistically significant? Explain.</li>
+</ol>
+<p><strong>The estimated coefficient is -0.367099 which means that a one million dollar increase in amount of funds is associated with a decrease of -0.367099 incidents of police brutality. The standard error is 0.004496 which means that the change in incidents of police brutality can vary by 0.004496. The p-value is &lt; 2.2e-16 and it is statistically significant because there are three asterisks. The p-value is less than the alpha value of 0.05 which means that the relationship between funds and incidents is statistically significant and the null hypothesis can be rejected which means that the observed relationship is not due to chance. </strong></p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Draw a scatterplot of po.brut (y-axis) and funds (x-axis). Right below your plot command, use abline to draw the fitted regression line, like this:</li>
+</ol>
+<pre class="r"><code>plot(dat$funds, dat$po.brut,  main=&quot;Relationship between Funds Recieved and Incidents of Police Brutality&quot;, xlab=&quot;Funds Recieved (Millions of Dollars)&quot;, ylab=&quot;Incidents of Police Brutality&quot;)
+abline(reg.output, col = &quot;red&quot;, lwd=2)</code></pre>
+<p><img src="Assignments_files/figure-html/unnamed-chunk-36-1.png" width="384" /></p>
+<pre class="r"><code>#for linearity assumption
+
+plot(reg.output, which=1)</code></pre>
+<p><img src="Assignments_files/figure-html/unnamed-chunk-36-2.png" width="384" /></p>
+<pre class="r"><code>#For Independence Assumption
+
+plot(dat$funds, reg.output$residuals, ylim=c(-15,15), main=&quot;Residuals vs. Funds&quot;, xlab=&quot;Funds Recieved (Millions of Dollars)&quot;, ylab=&quot;Residuals&quot;)
+abline(h = 0, lty=&quot;dashed&quot;)</code></pre>
+<p><img src="Assignments_files/figure-html/unnamed-chunk-36-3.png" width="384" /></p>
+<pre class="r"><code>#For Homoscedasticity Assumption
+
+plot(reg.output, which=3)</code></pre>
+<p><img src="Assignments_files/figure-html/unnamed-chunk-36-4.png" width="384" /></p>
+<pre class="r"><code>#For Normal Population
+
+plot(reg.output, which=5)</code></pre>
+<p><img src="Assignments_files/figure-html/unnamed-chunk-36-5.png" width="384" /></p>
+<pre class="r"><code>plot(reg.output, which=2)</code></pre>
+<p><img src="Assignments_files/figure-html/unnamed-chunk-36-6.png" width="384" /> Does the line look like a good fit? Why or why not?</p>
+<p><strong>The line looks like a good fit because most of the points fall on the line.</strong></p>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Are the four assumptions of linear regression satisfied? To answer this, draw the relevant plots. (Write a maximum of one sentence per assumption.) If not, what might you try to do to improve this (if you had more time)?</li>
+</ol>
+<p><strong>For the linearity assumption, on the “Residuals vs Fitted” plot the points follow a pattern and there is not equal variance between them which means that linearity is not satisfied. For the independence assumption, the dataset is not a time series since the data is collected from 200 different police departments and the “Residuals vs Funds” plot does not suggest variable dependence which means the assumption is satisfied but it is hard to tell from the plot alone. For the homoscedasticity assumption, the scale-location plot does not show equal variance among the points and the line is curved which does not suggest a linear trend therefore this assumption is not satisfied. For the normal population assumption, there does not appear to be any outliers but the Q-Q plot shows that the points do not follow the line and instead curve which means that the data is left skewed and not normal so the assumption is not satisfied. To improve the data so the assumptions are satisfied, the data can be transformed with log. The log of incidents of police brutality can be taken to see if that makes the data fit the model better. </strong></p>
+<ol start="5" style="list-style-type: lower-alpha">
+<li>Answer the question of interest based on your analysis.</li>
+</ol>
+<p><strong>When looking at the scatterplot and linear regression summary and plot, it appears that having more funding decreases incidents of police brutality. However, the linear regression model is not a a good model to make a conclusion off of because all of the assumptions tested were not satisfied. Since the assumptions were not satisfied, the linear regression model is not a good fit for the data.In order to come to a clearer conclusion about the relationship between funding and incidents of police brutality, the model needs to be transformed. </strong></p>
+</div>
+<div id="problem-3-data-ethics" class="section level3">
+<h3>Problem 3: Data ethics</h3>
+<p>Describe the dataset. Considering our lecture on data ethics, what concerns do you have about the dataset? Once you perform your analysis to answer the question of interest using this dataset, what concerns might you have about the results?</p>
+<p><strong>The dataset includes observations from 200 police departments about funding received and incidents of police brutality in one year.Some concerns about the data are sampling bias since we do not know which police departments were chosen and how they were chosen. If most of the police departments come from one area then the data is not representative of the population and could be biased. We also do not know who the researchers were and who funded their study which could be another concern for bias. There is also a concern that the police departments were not accurate with their report for incidents of police brutality since that could make a police department look bad. The results from the analysis can be misleading because there is statistical significance and the R value and correlation are high so it appears that there is a relationship between funding and incidents. However, when assumptions are checked they are not satisfied which means that the model is not a good fit so conclusions should not be made using it.</strong></p>
+</div>
+</div>
 </div>
 
 
