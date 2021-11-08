@@ -671,11 +671,12 @@ $$\\[2in]$$
 
 ### Data Visualization 
 
-```{r}
+```{r, include=FALSE}
 #install.packages("tidyverse")
 library(tidyverse)
 #install.packages("dplyr")
 library(dplyr) 
+options(tinytex.verbose = TRUE)
 #> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
 #> ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
 #> ✔ tibble  3.0.3     ✔ dplyr   1.0.2
